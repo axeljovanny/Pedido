@@ -1,0 +1,53 @@
+-- Database: universidad
+
+-- DROP DATABASE universidad;
+
+CREATE DATABASE universidad
+    WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'Spanish_Mexico.1252'
+    LC_CTYPE = 'Spanish_Mexico.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+
+
+-- Table: public.estudiantes
+
+-- DROP TABLE public.estudiantes;
+
+CREATE TABLE public.estudiantes
+(
+    id_estudiante integer NOT NULL DEFAULT nextval('estudiantes_id_estudiante_seq'::regclass),
+    nombre character varying(20) COLLATE "default".pg_catalog,
+    apellidos character varying(30) COLLATE "default".pg_catalog,
+    curso character varying(30) COLLATE "default".pg_catalog,
+    anio integer,
+    CONSTRAINT estudiantes_pkey PRIMARY KEY (id_estudiante)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.estudiantes
+    OWNER to postgres;
+-- Table: public.pedidos
+
+-- DROP TABLE public.pedidos;
+
+CREATE TABLE public.pedidos
+(
+    id_pedido integer NOT NULL DEFAULT nextval('pedidos_id_pedido_seq'::regclass),
+    fecha character varying(30) COLLATE "default".pg_catalog,
+    cliente character varying(30) COLLATE "default".pg_catalog,
+    observacion character varying(30) COLLATE "default".pg_catalog,
+    CONSTRAINT pedidos_pkey PRIMARY KEY (id_pedido)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.pedidos
+    OWNER to postgres;
